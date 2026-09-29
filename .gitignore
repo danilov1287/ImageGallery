@@ -24,9 +24,5 @@ Package.resolved
 Pods/
 
 # Secrets (твои client_id/client_secret)
-Secrets.plist.sample
-ImageGallery/Secrets.swift
-Secrets.plist
-Secrets.json
-Secrets.swift
+#Secrets.plist
 .env
