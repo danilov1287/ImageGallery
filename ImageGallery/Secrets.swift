@@ -8,11 +8,12 @@
 import Foundation
 
 
-struct Secrets {
+final class Secrets {
     static let shared = Secrets()
 
     let clientId: String
     let clientSecret: String
+    var accessToken: String? = nil
 
     private init() {
         guard let url = Bundle.main.url(forResource: "Secrets", withExtension: "plist"),
@@ -24,5 +25,8 @@ struct Secrets {
         }
         self.clientId = clientId
         self.clientSecret = clientSecret
+    }
+    func setAccessToken(_ accessToken: String) {
+        self.accessToken = accessToken
     }
 }
