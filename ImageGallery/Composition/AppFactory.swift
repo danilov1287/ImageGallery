@@ -10,7 +10,7 @@ import UIKit
 
 final class AppFactory {
     private let service: ServiceFactory
-
+    private var defaultScreen: Int = 0
     init(service: ServiceFactory) {
         self.service = service
     }
@@ -42,7 +42,7 @@ final class AppFactory {
         // --- Сборка TabBar ---
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [mainNav, favNav, settingsNav]
-
+        tabBarController.selectedIndex = defaultScreen
         return tabBarController
     }
     @MainActor
@@ -52,7 +52,9 @@ final class AppFactory {
         var imageService: ImageService? = nil
         do{
             imageService = try service.makeImageService()
-        } catch {}
+        } catch {
+            defaultScreen = 2 // GOTO:setting
+        }
         let galleryInteractor = GalleryInteractor(
             presenter: galleryPresenter,
             service: imageService,
