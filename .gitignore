@@ -24,5 +24,5 @@ Package.resolved
 Pods/
 
 # Secrets (твои client_id/client_secret)
-#Secrets.plist
+Secrets.plist
 .env
